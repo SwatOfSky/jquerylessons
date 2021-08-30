@@ -2,8 +2,25 @@
 <html>
 <head>
 	<title>jquery lessons</title>
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
-	<button>HIDE IT</button>
+	<button id="hideit">HIDE IT</button>
+	<input type="button" id="hider" value="Нажмите, чтобы спрятать текст" />
+
+	<div id="text">Текст</div>
+	<script>
+		$(function() {
+		$('button#hideit').on('click', function (){
+			$('button').hide();
+		})
+		})
+
+		$(function (){
+			$('input#hider').on('click', function (){
+				$('div#text').toggle();
+			})
+		})
+	</script>
 </body>
 </html>
