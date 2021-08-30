@@ -3,12 +3,25 @@
 <head>
 	<title>jquery lessons</title>
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<style>
+		#langs p {display: none;}
+		#langs p.first{display: block;}
+	</style>
 </head>
 <body>
 	<button id="hideit">HIDE IT</button>
 	<input type="button" id="hider" value="Нажмите, чтобы спрятать текст" />
 
 	<div id="text">Текст</div>
+
+	<div id="langs">
+		<p class="first">Java</p>
+		<p>C/C++</p>
+		<p>PHP</p>
+		<p class="last">JavaScript</p>
+	</div>
+	<button id="prev">Назад</button>
+	<button id="next">Вперёд</button>
 	<script>
 		$(function() {
 		$('button#hideit').on('click', function (){
@@ -20,6 +33,25 @@
 			$('input#hider').on('click', function (){
 				$('div#text').toggle();
 			})
+		})
+
+		$(function (){
+			let current =$('p').first();
+			$('button#next').on('click', function (){
+				$(current).not('.last').hide('fast', function (){
+					current = $(current).next('p');
+					$(current).show('fast');
+				})
+			})
+		})
+		$(function (){
+			let current =$('p').last();
+		$('button#prev').on('click', function (){
+			$(current).not('.first').hide('fast', function (){
+				current = $(current).prev('p');
+				$(current).show('fast');
+			})
+		})
 		})
 	</script>
 </body>
